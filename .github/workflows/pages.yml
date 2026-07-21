@@ -39,7 +39,7 @@ jobs:
       - name: Upload Web build
         uses: actions/upload-pages-artifact@v4
         with:
-          path: build/web
+          path: build/web/Web
 
   deploy:
     if: github.event_name != 'pull_request'
