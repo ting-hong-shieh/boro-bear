@@ -1,6 +1,15 @@
 # Third-party notices
 
-本專案實際使用的外部聲音素材皆標示為 Creative Commons Zero（CC0）或 public domain，可用於商業作品且不要求署名。此檔仍保留作者、來源頁與用途，方便日後稽核。
+本檔保留遊戲使用的第三方素材來源、授權與用途，方便日後稽核。
+
+## Font
+
+### Noto Sans Traditional Chinese — Google
+
+- License: SIL Open Font License 1.1
+- Source: https://github.com/google/fonts/tree/main/ofl/notosanstc
+- Local files: `assets/fonts/NotoSansTC-Variable.ttf` and `assets/fonts/OFL.txt`
+- Purpose: bundled Traditional Chinese UI glyphs for Web exports, which cannot rely on the player's system fonts
 
 ## Sound effects
 
