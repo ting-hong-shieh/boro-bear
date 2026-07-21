@@ -1,0 +1,17 @@
+.godot/
+.DS_Store
+*.tmp
+*.import
+artifacts/
+build/
+desktop.ini
+.claude/
+
+# Legacy prototype files kept locally, but not part of the shipped game.
+IDLE試試.py
+Player.png
+Player1.png
+bear.png
+boroboro.png
+cosmic.png
+platform.png
