@@ -1,0 +1,267 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scripts/game.gd" id="1_game"]
+[ext_resource type="PackedScene" path="res://scenes/player.tscn" id="2_player"]
+[ext_resource type="Script" path="res://scripts/touch_controls.gd" id="3_touch"]
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_game")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(640, 360)
+process_callback = 0
+
+[node name="LevelCollision" type="Node2D" parent="."]
+
+[node name="Teddy" type="Sprite2D" parent="."]
+z_index = 3
+position = Vector2(640, 610)
+scale = Vector2(0.2, 0.2)
+
+[node name="LimbPickup" type="Sprite2D" parent="."]
+z_index = 4
+position = Vector2(1155, 604)
+scale = Vector2(0.16, 0.16)
+
+[node name="TeddyEscape" type="Sprite2D" parent="."]
+visible = false
+z_index = 4
+scale = Vector2(0.105, 0.105)
+
+[node name="Player" parent="." instance=ExtResource("2_player")]
+z_index = 5
+position = Vector2(390, 610)
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+volume_db = -16.0
+
+[node name="SFX" type="AudioStreamPlayer" parent="."]
+volume_db = -7.0
+max_polyphony = 8
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="TopBar" type="ColorRect" parent="UI"]
+offset_left = 18.0
+offset_top = 16.0
+offset_right = 1262.0
+offset_bottom = 80.0
+color = Color(0.035, 0.027, 0.024, 0.79)
+
+[node name="Objective" type="Label" parent="UI/TopBar"]
+offset_left = 20.0
+offset_top = 7.0
+offset_right = 860.0
+offset_bottom = 57.0
+theme_override_colors/font_color = Color(0.98, 0.9, 0.72, 1)
+theme_override_font_sizes/font_size = 22
+text = "目標"
+vertical_alignment = 1
+
+[node name="Progress" type="Label" parent="UI/TopBar"]
+offset_left = 865.0
+offset_top = 7.0
+offset_right = 1218.0
+offset_bottom = 57.0
+theme_override_colors/font_color = Color(0.75, 0.9, 0.83, 1)
+theme_override_font_sizes/font_size = 18
+text = "縫線 0 / 4"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="EscapeTimer" type="Label" parent="UI"]
+visible = false
+offset_left = 390.0
+offset_top = 90.0
+offset_right = 890.0
+offset_bottom = 148.0
+theme_override_colors/font_color = Color(1, 0.82, 0.55, 1)
+theme_override_colors/font_shadow_color = Color(0.1, 0.02, 0.01, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_font_sizes/font_size = 32
+text = "逃離 45.0"
+horizontal_alignment = 1
+
+[node name="HintBar" type="ColorRect" parent="UI"]
+visible = false
+offset_left = 420.0
+offset_top = 88.0
+offset_right = 860.0
+offset_bottom = 140.0
+color = Color(0.035, 0.027, 0.024, 0.86)
+
+[node name="Hint" type="Label" parent="UI/HintBar"]
+offset_right = 440.0
+offset_bottom = 52.0
+theme_override_colors/font_color = Color(1, 0.91, 0.65, 1)
+theme_override_font_sizes/font_size = 21
+text = "[E] 互動"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MessagePanel" type="ColorRect" parent="UI"]
+visible = false
+offset_left = 170.0
+offset_top = 650.0
+offset_right = 1110.0
+offset_bottom = 712.0
+color = Color(0.025, 0.02, 0.018, 0.9)
+
+[node name="Accent" type="ColorRect" parent="UI/MessagePanel"]
+offset_right = 5.0
+offset_bottom = 62.0
+color = Color(0.87, 0.63, 0.29, 1)
+
+[node name="Message" type="Label" parent="UI/MessagePanel"]
+offset_left = 22.0
+offset_top = 5.0
+offset_right = 915.0
+offset_bottom = 57.0
+theme_override_colors/font_color = Color(0.98, 0.95, 0.88, 1)
+theme_override_font_sizes/font_size = 20
+text = "訊息"
+horizontal_alignment = 1
+vertical_alignment = 1
+text_overrun_behavior = 3
+
+[node name="Controls" type="Label" parent="UI"]
+offset_left = 20.0
+offset_top = 690.0
+offset_right = 490.0
+offset_bottom = 716.0
+theme_override_colors/font_color = Color(0.94, 0.91, 0.84, 0.7)
+theme_override_font_sizes/font_size = 14
+text = "A D 移動　Space 跳躍　E 互動　Esc 暫停　M 靜音"
+
+[node name="TouchControls" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("3_touch")
+
+[node name="TitlePanel" type="ColorRect" parent="UI"]
+offset_right = 1280.0
+offset_bottom = 720.0
+color = Color(0.025, 0.018, 0.016, 0.72)
+
+[node name="Title" type="Label" parent="UI/TitlePanel"]
+offset_left = 130.0
+offset_top = 120.0
+offset_right = 1150.0
+offset_bottom = 255.0
+theme_override_colors/font_color = Color(0.97, 0.84, 0.6, 1)
+theme_override_colors/font_shadow_color = Color(0.06, 0.025, 0.02, 1)
+theme_override_constants/shadow_offset_x = 4
+theme_override_constants/shadow_offset_y = 4
+theme_override_font_sizes/font_size = 72
+text = "波洛熊"
+horizontal_alignment = 1
+
+[node name="Subtitle" type="Label" parent="UI/TitlePanel"]
+offset_left = 200.0
+offset_top = 250.0
+offset_right = 1080.0
+offset_bottom = 305.0
+theme_override_colors/font_color = Color(0.88, 0.9, 0.84, 1)
+theme_override_font_sizes/font_size = 22
+text = "BORO BEAR — 一棟正在遺忘你的房子"
+horizontal_alignment = 1
+
+[node name="Menu" type="Label" parent="UI/TitlePanel"]
+offset_left = 360.0
+offset_top = 435.0
+offset_right = 920.0
+offset_bottom = 555.0
+theme_override_colors/font_color = Color(1, 0.93, 0.77, 1)
+theme_override_font_sizes/font_size = 24
+text = "[Enter] 繼續遊戲\n[N] 開始新遊戲"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Credit" type="Label" parent="UI/TitlePanel"]
+offset_left = 300.0
+offset_top = 655.0
+offset_right = 980.0
+offset_bottom = 690.0
+theme_override_colors/font_color = Color(0.85, 0.85, 0.8, 0.72)
+theme_override_font_sizes/font_size = 15
+text = "建議使用耳機遊玩 · 自動存檔"
+horizontal_alignment = 1
+
+[node name="PausePanel" type="ColorRect" parent="UI"]
+visible = false
+offset_right = 1280.0
+offset_bottom = 720.0
+color = Color(0.02, 0.015, 0.012, 0.78)
+
+[node name="Text" type="Label" parent="UI/PausePanel"]
+offset_left = 300.0
+offset_top = 215.0
+offset_right = 980.0
+offset_bottom = 505.0
+theme_override_colors/font_color = Color(0.98, 0.9, 0.72, 1)
+theme_override_font_sizes/font_size = 30
+text = "暫停\n\n[Esc] 繼續　[M] 靜音 / 取消靜音\n[R] 回到標題"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="FailPanel" type="ColorRect" parent="UI"]
+visible = false
+offset_right = 1280.0
+offset_bottom = 720.0
+color = Color(0.11, 0.025, 0.02, 0.82)
+
+[node name="Text" type="Label" parent="UI/FailPanel"]
+offset_left = 260.0
+offset_top = 220.0
+offset_right = 1020.0
+offset_bottom = 500.0
+theme_override_colors/font_color = Color(1, 0.86, 0.67, 1)
+theme_override_font_sizes/font_size = 32
+text = "房子吞沒了最後一階樓梯\n\n[E] 從逃生起點重試"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="EndingPanel" type="ColorRect" parent="UI"]
+visible = false
+offset_right = 1280.0
+offset_bottom = 720.0
+color = Color(0.025, 0.04, 0.05, 0.9)
+
+[node name="Title" type="Label" parent="UI/EndingPanel"]
+offset_left = 200.0
+offset_top = 105.0
+offset_right = 1080.0
+offset_bottom = 190.0
+theme_override_colors/font_color = Color(1, 0.87, 0.61, 1)
+theme_override_font_sizes/font_size = 48
+text = "天亮了"
+horizontal_alignment = 1
+
+[node name="Story" type="Label" parent="UI/EndingPanel"]
+offset_left = 230.0
+offset_top = 235.0
+offset_right = 1050.0
+offset_bottom = 465.0
+theme_override_colors/font_color = Color(0.95, 0.94, 0.88, 1)
+theme_override_font_sizes/font_size = 25
+text = "結局"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Footer" type="Label" parent="UI/EndingPanel"]
+offset_left = 250.0
+offset_top = 550.0
+offset_right = 1030.0
+offset_bottom = 650.0
+theme_override_colors/font_color = Color(0.85, 0.9, 0.84, 0.85)
+theme_override_font_sizes/font_size = 19
+text = "[Enter] 回到標題"
+horizontal_alignment = 1
+vertical_alignment = 1
