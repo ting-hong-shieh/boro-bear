@@ -1,54 +1,96 @@
-# Boro Bear · 波洛熊：縫線房
+<div align="center">
 
-一款以 Godot 4.7 製作的 2D 短篇敘事解謎平台遊戲。主角小眠在一棟逐漸崩解的記憶之屋中遇見失去四肢的泰迪熊「波洛」，必須走過四個房間、解開四種機關，把四肢逐一帶回，最後在倒數中一起逃離。
+<a href="https://ting-hong-shieh.github.io/boro-bear/">
+  <img src="art/previews/title-screen-v1.png" alt="Boro Bear title screen" width="100%">
+</a>
 
-## 完整遊戲流程
+<p>
+  <a href="https://github.com/ting-hong-shieh/boro-bear/actions/workflows/pages.yml"><img alt="Web build" src="https://img.shields.io/github/actions/workflow/status/ting-hong-shieh/boro-bear/pages.yml?branch=main&style=flat-square&label=web%20build"></a>
+  <img alt="Godot 4.7.1" src="https://img.shields.io/badge/Godot-4.7.1-478CBF?style=flat-square&logo=godotengine&logoColor=white">
+  <img alt="GDScript" src="https://img.shields.io/badge/language-GDScript-478CBF?style=flat-square">
+  <img alt="Web and desktop" src="https://img.shields.io/badge/platform-Web%20%7C%20Desktop-7C3AED?style=flat-square">
+</p>
 
-1. **沉水地下室**：跨越積水、依壓力紀錄開啟三個水壓閥，取回左手。
-2. **月光溫室**：理解鏡根連動規則，讓三面鏡同時匯聚月光，取回右手。
-3. **沉默樂室**：依台座上的序號重奏四個音盒，取回左腳。
-4. **逆行鐘塔**：依金色目標刻度調整三枚配重，取回右腳。
-5. **房子醒了**：波洛修復完成後，於 48 秒內沿崩塌樓梯抵達右上方出口。
+<p><strong>Four rooms. One broken bear. A house made of memories that is beginning to collapse.</strong></p>
 
-每個章節藏有一條「記憶線」。四條全部找到會開啟完整結局；缺少記憶線仍可完成普通結局。遊戲在重要進度後自動存檔。
+<p>
+  <a href="https://ting-hong-shieh.github.io/boro-bear/"><strong>▶ Play in your browser</strong></a> ·
+  English · <a href="README.zh-TW.md">繁體中文</a>
+</p>
 
-四肢是每個房間的解謎獎勵：進入房間時不會顯示，只有完成機關後才會透過縫線揭露演出出現。
+</div>
 
-## 操作
+**Boro Bear · 波洛熊：縫線房** is a short 2D narrative puzzle-platformer made with
+Godot 4.7. Xiaomian meets Boro, a teddy bear missing all four limbs, inside a house
+whose rooms are coming apart. Solve each room's mechanism, stitch Boro back together,
+and reach the exit before the final collapse.
 
-- 移動：`A` / `D` 或方向鍵
-- 跳躍：`Space`、`W` 或上方向鍵
-- 互動／推進對話：`E`
-- 暫停：`Esc`
-- 靜音：`M`
-- 暫停畫面回標題：`R`
-- 標題畫面：`Enter` 繼續、`N` 開始新遊戲
+Progress is saved automatically. Each room also hides a memory thread; finding all four
+unlocks the complete ending.
 
-### 手機網頁版
+## Screenshots
 
-- 建議橫向遊玩；加入主畫面後可以 PWA 全螢幕開啟。
-- 左下角：左右移動（支援滑動換向與多點觸控）。
-- 右下角：互動、跳躍；右上角：暫停。
-- 觸控按鈕僅在觸摸螢幕或 coarse pointer 裝置顯示，桌面瀏覽器仍使用鍵盤。
+<table>
+  <tr>
+    <td width="50%"><img src="art/previews/greenhouse-gameplay-v1.png" alt="Moonlit greenhouse mirror puzzle"></td>
+    <td width="50%"><img src="art/previews/escape-gameplay-v1.png" alt="Final escape through the collapsing house"></td>
+  </tr>
+  <tr>
+    <td align="center"><sub>Moonlit greenhouse · mirror puzzle</sub></td>
+    <td align="center"><sub>The house awakens · final escape</sub></td>
+  </tr>
+</table>
 
-## 執行
+## The five-part journey
 
-使用 Godot 4.7.x 匯入此資料夾，開啟 `project.godot` 後按 `F6` 或 `F5`。
+1. **Flooded Basement** — read the pressure records, set three valves, and recover the
+   left arm.
+2. **Moonlit Greenhouse** — align three linked mirrors and recover the right arm.
+3. **Silent Music Room** — replay four music boxes in the recorded order and recover
+   the left leg.
+4. **Rewinding Clocktower** — match three counterweights to their marked positions and
+   recover the right leg.
+5. **The House Awakens** — escape with the repaired Boro before the 48-second timer
+   reaches zero.
+
+## Controls
+
+| Action | Keyboard |
+| --- | --- |
+| Move | `A` / `D` or arrow keys |
+| Jump | `Space`, `W`, or ↑ |
+| Interact / continue dialogue | `E` |
+| Pause | `Esc` |
+| Mute | `M` |
+| Return to title from pause | `R` |
+| Continue / new game on title screen | `Enter` / `N` |
+
+### Mobile web
+
+Play in landscape orientation. Touch controls appear on touch screens and coarse-pointer
+devices: movement on the lower left, interaction and jump on the lower right, and pause
+in the upper right. The game can be added to the home screen for a full-screen session.
+
+## Run locally
+
+Import the repository with Godot 4.7.x, open `project.godot`, and press `F6` or `F5`.
 
 ```sh
 godot --path . --editor
 ```
 
-Web 版本地匯出（需先安裝 Godot 4.7.1 export templates）：
+To export the web build locally, install the Godot 4.7.1 export templates first:
 
 ```sh
 mkdir -p build/web
 godot --headless --path . --export-release Web build/web/index.html
 ```
 
-`main` 分支每次 push 都會由 GitHub Actions 重新匯出並發佈到 GitHub Pages。
+Pushes to `main` are exported and deployed to GitHub Pages by GitHub Actions.
 
-開發者測試：
+## Developer checks
+
+Launch an individual chapter:
 
 ```sh
 godot --path . -- --debug-basement
@@ -56,26 +98,28 @@ godot --path . -- --debug-greenhouse
 godot --path . -- --debug-music_room
 godot --path . -- --debug-clocktower
 godot --path . -- --debug-escape
+```
+
+Run the complete flow and physics checks headlessly:
+
+```sh
 godot --headless --path . -- --debug-full-flow
 godot --headless --path . -- --debug-physics-test
 ```
 
-物理測試會以模擬按鍵實際走動與跳躍，驗證：平台下方通行不卡住、單向平台可從下方穿越、跳躍高度足以登上平台、左右邊界牆有效。成功時輸出 `BORO_PHYSICS_TEST_OK`。
+The flow check succeeds after all four puzzles, four repairs, the escape, and the true
+ending. The physics check exercises movement and jumping against platform clearance,
+one-way platforms, reachable jump height, and boundary walls.
 
-完整流程測試成功時會輸出：
+## Project structure
 
-```text
-BORO_COMPLETE_FLOW_OK: four puzzles -> four repairs -> escape -> true ending
-```
+- `scenes/` — main game and player scenes;
+- `scripts/game.gd` — chapters, puzzles, dialogue, UI, escape, and endings;
+- `scripts/game_state.gd` — cross-chapter state and JSON saves;
+- `scripts/player.gd` — movement, jumping, animation, and footsteps;
+- `art/` — concepts, character animation, modular Boro art, and previews;
+- `audio/` — music and sound effects used by the game;
+- `third_party/` — upstream assets and their accompanying licenses.
 
-## 專案結構
-
-- `scenes/`：主場景與玩家場景
-- `scripts/game.gd`：關卡、謎題、敘事、UI、逃生與結局流程
-- `scripts/game_state.gd`：跨關卡狀態與 JSON 存檔
-- `scripts/player.gd`：移動、跳躍、動畫與腳步聲
-- `art/`：概念場景、角色動畫、模組化泰迪熊與遊戲預覽
-- `audio/`：實際使用的 CC0 音樂與音效
-- `third_party/`：第三方原始素材與隨附授權
-
-遊戲以 1280×720 為設計基準，使用 GL Compatibility renderer。第三方素材來源與授權見 `THIRD_PARTY_NOTICES.md`。
+The game targets a 1280 × 720 viewport and uses Godot's GL Compatibility renderer.
+See [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) for asset sources and licenses.
